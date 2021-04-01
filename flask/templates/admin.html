@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>ScoreBox Volleyball</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/static/main.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+
+    </head>
+
+    <body>
+
+        <div id="build-tag">
+            {{version}}
+        </div>
+
+        <div id="header-chrome">
+            <img src="/static/img/logo-white.png" height="50px">
+            <h1>Volleyball</h1>
+            <img src="/static/img/volleyball_icon.svg" height="25px">
+            <h2>{{home_name}} vs {{visitor_name}}</h2>
+            <div id="status-indicator">
+                STATUS: <span id="status" class="error">DISCONNECTED</span>
+            </div>
+        </div>
+
+        <div id="overlay-dashboard" class="dash-contents">
+            <h3>Overlay Preview</h3>
+            <p>
+                Preview of the live overlay and realtime data feed.
+            </p>
+            <iframe src="/overlay" scrolling="no"></iframe>
+            <div class="raw-data">
+                <div class="raw-data-item">
+                    <div class="raw-data-header">Home Score</div>
+                    <div class="raw-data-content" id="raw-home-score">n/a</div>
+                </div>
+                <div class="raw-data-item">
+                    <div class="raw-data-header">Home Sets</div>
+                    <div class="raw-data-content" id="raw-home-sets">n/a</div>
+                </div>
+                <div class="raw-data-item">
+                    <div class="raw-data-header">Set</div>
+                    <div class="raw-data-content" id="raw-set">n/a</div>
+                </div>
+                <div class="raw-data-item">
+                    <div class="raw-data-header">Visitor Sets</div>
+                    <div class="raw-data-content" id="raw-visitor-sets">n/a</div>
+                </div>
+                <div class="raw-data-item">
+                    <div class="raw-data-header">Visitor Score</div>
+                    <div class="raw-data-content" id="raw-visitor-score">n/a</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="alerts-dashboard" class="dash-contents">
+            <h3>Alert Bar</h3>
+            <p>
+                Control the text bar that attaches above the scorebox.
+            </p>
+
+            <div id="alert-controls">
+                <div class="toggle-container">
+                    <div class="toggle-prompt">
+                        Alert Visibility
+                    </div>
+                    <button class="toggle toggled" id="toggle-alert-off">Off</button>
+                    <button class="toggle" id="toggle-alert-on">On</button>
+                </div>
+                <div class="toggle-container three">
+                    <div class="toggle-prompt">
+                        Alert Bar Mode
+                    </div>
+                    <button class="toggle" id="toggle-alert-mode-home">Home</button>
+                    <button class="toggle toggled" id="toggle-alert-mode-neutral">Neutral</button>
+                    <button class="toggle" id="toggle-alert-mode-visitor">Visitor</button>
+                </div>
+                <div class="flag-stack">
+                    <div class="text-input-preview top-row">
+                        <div class="text-input-caption">Alert Bar Preview</div>
+                        <div class="text-input-title" id="alert-preview">Main Title</div>
+                    </div>
+                    <div class="text-input top-row">
+                        <label for="alert-input">Alert Bar Text</label>
+                        <input type="text" id="alert-input">
+                    </div>
+                    <button class="btn" id="alert-clear">Clear</button>
+                    <button class="btn red" id="alert-display">Display</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="display-mode-dashboard" class="dash-contents">
+            <h3>Display Mode</h3>
+            <p>
+                Control the overlay display mode.
+            </p>
+
+            <div id="display-mode-controls">
+                <div class="toggle-container six">
+                    <div class="toggle-prompt">
+                        Display Mode
+                    </div>
+                    <button class="toggle toggled" id="toggle-display-live">Live</button>
+                    <button class="toggle" id="toggle-display-start">Starting Soon</button>
+                    <button class="toggle" id="toggle-display-set-score">Set Score</button>
+                    <button class="toggle" id="toggle-display-final">Final</button>
+                </div>
+            </div>
+        </div>
+        
+
+        <script src="/static/third-party/socket.io.min.js"></script>
+        <script src="/static/admin.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>ScoreBox Volleyball</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/static/main.css">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+
+    </head>
+
+    <body id="center">
+
+        <div id="build-tag">
+            {{version}}
+        </div>
+
+        <div class="center-container">
+            <div class="center-contents">
+                <img src="/static/img/logo-white.png" width="200px">
+                <div class="title-holder">
+                    <img src="/static/img/volleyball_icon.svg" width="30px">
+                    <p>Volleyball</p>
+                    <img src="/static/img/volleyball_icon.svg" width="30px">
+                </div>
+
+                <form id="event-form">
+                    <div id='event-input'>
+                        <div class="label">
+                            <label for="event-home-team">Home Team</label>
+                            <p>
+                                Team name, mascot, color, and logo.
+                            </p>
+                        </div>
+                        <div class="input">
+                            <input type="text" class="input" name="event-home-team" id="event-home-team" placeholder="New England">
+                            <input type="text" class="input" name="event-home-mascot" id="event-home-mascot" placeholder="Patriots">
+                            <div class="color-btns">
+                                <button onclick="return homeColorSelector(this, 'red')" class="home red"></button>
+                                <button onclick="return homeColorSelector(this, 'orange')" class="home orange"></button>
+                                <button onclick="return homeColorSelector(this, 'yellow')" class="home yellow"></button>
+                                <button onclick="return homeColorSelector(this, 'green')" class="home green"></button>
+                                <button onclick="return homeColorSelector(this, 'blue')" class="home blue"></button>
+                                <button onclick="return homeColorSelector(this, 'purple')" class="home purple"></button>
+                                <button onclick="return homeColorSelector(this, 'gold')" class="home gold"></button>
+                                <button onclick="return homeColorSelector(this, 'silver')" class="home silver"></button>
+                            </div>
+                            <input type="file" id="event-home-logo" accept=".jpg,.png">
+                            <label for="event-home-logo" id="event-home-logo-label" class="file-label">
+                                Select a Home Logo...
+                            </label>
+                        </div>
+                        <div class="label">
+                            <label for="event-visiting-team">Visiting Team</label>
+                            <p>
+                                Team name, mascot, color, and logo.
+                            </p>
+                        </div>
+                        <div class="input">
+                            <input type="text" class="input" name="event-visiting-team" id="event-visiting-team" placeholder="Los Angeles">
+                            <input type="text" class="input" name="event-visiting-mascot" id="event-visiting-mascot" placeholder="Rams">
+                            <div class="color-btns">
+                                <button onclick="return visitorColorSelector(this, 'red')" class="visitor red"></button>
+                                <button onclick="return visitorColorSelector(this, 'orange')" class="visitor orange"></button>
+                                <button onclick="return visitorColorSelector(this, 'yellow')" class="visitor yellow"></button>
+                                <button onclick="return visitorColorSelector(this, 'green')" class="visitor green"></button>
+                                <button onclick="return visitorColorSelector(this, 'blue')" class="visitor blue"></button>
+                                <button onclick="return visitorColorSelector(this, 'purple')" class="visitor purple"></button>
+                                <button onclick="return visitorColorSelector(this, 'gold')" class="visitor gold"></button>
+                                <button onclick="return visitorColorSelector(this, 'silver')" class="visitor silver"></button>
+                            </div>
+                            <input type="file" id="event-visitor-logo" accept=".jpg,.png">
+                            <label for="event-visitor-logo" id="event-visitor-logo-label" class="file-label">
+                                Select a Visitor Logo...
+                            </label>
+                        </div>
+                        <div class="label">
+                            <label for="event-com-port">COM Port</label>
+                            <p>
+                                Serial COM port identifier to which the scoreboard console is connected.
+                            </p>
+                        </div>
+                        <div class="input full">
+                            <input type="text" class="input" name="event-com-port" id="event-com-port" placeholder="COM1">
+                        </div>
+                        <div class="submit">
+                            <button class="btn">Continue</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <script src="/static/setup.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <title>ScoreBox Volleyball Overlay</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="/static/overlay.css">
+
+    </head>
+
+    <body>
+        <div class="alert-box hidden animate-out" id="neutral-alert">
+        </div>
+
+        <div class="alert-box team-alert home-alert bg {{home_color}} hidden animate-out" id="home-alert">
+        </div>
+
+        <div class="alert-box team-alert visitor-alert bg {{visitor_color}} hidden animate-out" id="visitor-alert">
+        </div>
+
+        <div id="scorebox" class="animate-out">
+            <div id="home" class="team-box {{home_color}}">
+                <div class="team-logo">
+                </div>
+                <div class="team-name">
+                    {{home_name}}
+                </div>
+                <div class="team-mascot">
+                    {{home_mascot}}
+                </div>
+                <div class="team-score" id="home-score">
+                    0
+                </div>
+            </div>
+            <div id="clock" class="clock-box">
+                <div id="set-score">5 - 5</div>
+                <div id="current-set">Set 0</div>
+            </div>
+            <div id="visitor" class="team-box {{visitor_color}}">
+                <div class="team-logo">
+                </div>
+                <div class="team-name">
+                    {{visitor_name}}
+                </div>
+                <div class="team-mascot">
+                    {{visitor_mascot}}
+                </div>
+                <div class="team-score" id="visitor-score">
+                    0
+                </div>
+            </div>
+        </div>
+
+        <div id="scorestate" class="animate-out out">
+            <div class="summary-box {{home_color}}">
+                <div class="home summary-logo"></div>
+                <div class="summary-score" id="home-summary-score">0</div>
+            </div>
+            <div class="summary-box {{visitor_color}}">
+                <div class="visitor summary-logo"></div>
+                <div class="summary-score" id="visitor-summary-score">2</div>
+            </div>
+            <div id="summary-tag">
+                End of 1st
+            </div>
+        </div>
+
+        <script src="/static/third-party/socket.io.min.js"></script>
+        <script src="/static/overlay.js"></script>
+
+    </body>
+
+</html>
