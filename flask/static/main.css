@@ -506,6 +506,17 @@ iframe{
     grid-column: 1/3;
 }
 
+.alert-stack{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.alert-stack .top-row{
+    grid-column: 1/4;
+}
+
 .dash-row{
     display: grid;
     width: 100%;

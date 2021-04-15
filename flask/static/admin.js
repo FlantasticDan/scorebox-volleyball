@@ -13,6 +13,7 @@ const toggleAlertModeVisitor = document.getElementById('toggle-alert-mode-visito
 const toggleAlertModeNeutral = document.getElementById('toggle-alert-mode-neutral')
 const alertInput = document.getElementById('alert-input')
 const alertClear = document.getElementById('alert-clear')
+const alertCredits = document.getElementById('credits')
 const alertDisplay = document.getElementById('alert-display')
 const alertPreview = document.getElementById('alert-preview')
 
@@ -122,6 +123,26 @@ alertDisplay.onclick = () => {
         socket.emit('alert-text-status', alertInput.value)
         alertInput.value = ''
     }
+}
+alertCredits.onclick = () => {
+    if (alertInput.value.length > 0)
+    {
+        let creditLines = alertInput.value.split('*')
+        let time = 0
+        creditLines.forEach(line => {
+            let credit = line.trim()
+            if (credit.length > 0) {
+                setTimeout(() => {
+                    socket.emit('alert-text-status', credit)
+                    setTimeout(() => {
+                        socket.emit('alert-visibility-status', 'off')
+                    }, 4500)
+                }, time)
+                time = time + 5000
+            }
+        })
+    }
+    alertInput.value = ''
 }
 
 function ClearDisplayToggles() {
