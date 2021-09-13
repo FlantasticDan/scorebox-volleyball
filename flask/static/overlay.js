@@ -30,17 +30,6 @@ socket.on('status', payload => {
     StatusUpdate()
 })
 
-socket.on('update', payload => {
-    homeScore.innerText = payload.home_score
-    visitorScore.innerText = payload.visitor_score
-
-    setScores.innerText = `${payload.home_sets} - ${payload.visitor_sets}`
-    currentSet.innerText = `Set ${payload.current_set}`
-
-    homeSets = payload.home_sets
-    visitorSets = payload.visitor_sets
-})
-
 function StatusUpdate() {
     if (statusObject.alert_visibility == 'off')
     {

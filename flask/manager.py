@@ -3,8 +3,13 @@ from threading import Thread
 from typing import Dict
 
 import socketio
+import httpx
 
 from consoles.sports import Volleyball
+
+def is_string_ip(string: str) -> bool:
+    octets = string.split('.')
+    return len(octets) == 4
 
 class VolleyballManager:
     '''Volleyball Game State Manager'''
@@ -24,14 +29,21 @@ class VolleyballManager:
         self.alert_visibility = 'off'
         self.alert_text = ''
         self.display_mode = 'live'
- 
-        self.client = socketio.Client()
-        self.client_thread = Thread(target=self.socket_client)
-        self.client_thread.start()
 
-        self.console = Volleyball(com_port)
-        self.console.on_update = self.updater
+        self.remote = is_string_ip(com_port)
+        self.source = com_port
+
+        if not self.remote:
+            self.client = socketio.Client()
+            self.client_thread = Thread(target=self.socket_client)
+            self.client_thread.start()
+
+            self.console = Volleyball(com_port)
+            self.console.on_update = self.updater
     
+        else:
+            httpx.get(f'http://{self.source}:9876/init/volleyball')
+
     def updater(self, game_state):
         if self.client.connected:
             self.client.emit('update', game_state)

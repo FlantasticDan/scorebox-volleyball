@@ -71,6 +71,33 @@
 
         <script src="/static/third-party/socket.io.min.js"></script>
         <script src="/static/overlay.js"></script>
+        <script>
+            {% if not remote %}
+                socket.on('update', payload => {
+                    homeScore.innerText = payload.home_score
+                    visitorScore.innerText = payload.visitor_score
+
+                    setScores.innerText = `${payload.home_sets} - ${payload.visitor_sets}`
+                    currentSet.innerText = `Set ${payload.current_set}`
+
+                    homeSets = payload.home_sets
+                    visitorSets = payload.visitor_sets
+                })
+
+            {% else %}
+                source = io("{{source}}:9876")
+                source.on('update', payload => {
+                    homeScore.innerText = payload.home_score
+                    visitorScore.innerText = payload.visitor_score
+
+                    setScores.innerText = `${payload.home_sets} - ${payload.visitor_sets}`
+                    currentSet.innerText = `Set ${payload.current_set}`
+
+                    homeSets = payload.home_sets
+                    visitorSets = payload.visitor_sets
+                })
+            {% endif %}
+        </script>
 
     </body>
 
